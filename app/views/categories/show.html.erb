@@ -1,0 +1,10 @@
+<h1><%= @category.name %></h1>
+
+<p>Recipes in this category:</p>
+<ul>
+  <% @category.recipes.each do |recipe| %>
+    <li><%= link_to recipe.name, recipe_path(recipe) %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back to Categories', categories_path %>
