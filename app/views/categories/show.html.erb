@@ -3,8 +3,12 @@
 <p>Recipes in this category:</p>
 <ul>
   <% @category.recipes.each do |recipe| %>
-    <li><%= link_to recipe.name, recipe_path(recipe) %></li>
+    <li>
+      <%= link_to recipe.name, recipe_path(recipe) %> |
+      <%= link_to 'Delete', category_bookmark_path(@category, recipe.bookmarks.find_by(category: @category)), method: :delete, data: { confirm: 'Are you sure?' } %>
+    </li>
   <% end %>
 </ul>
 
+<%= link_to 'Add a Recipe', new_category_bookmark_path(@category) %>
 <%= link_to 'Back to Categories', categories_path %>
