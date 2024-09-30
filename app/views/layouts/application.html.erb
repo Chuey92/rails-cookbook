@@ -18,6 +18,13 @@
   </head>
 
   <body>
+    <header>
+      <nav>
+        <%= link_to 'Home', root_path %> |
+        <%= link_to 'All Categories', categories_path %> |
+        <%= link_to 'Add a New Category', new_category_path %>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
