@@ -7,3 +7,33 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+Recipe.destroy_all
+
+Recipe.create!(
+  name: "Spaghetti Carbonara",
+  description: "A true Italian Carbonara recipe, it's ready in about 30 minutes. There is no cream, just eggs, cheese, pancetta, and pepper.",
+  image_url: "https://example.com/carbonara.jpg",
+  rating: 8.5
+)
+
+Recipe.create!(
+  name: "Classic Caesar Salad",
+  description: "A delicious Caesar salad with crispy croutons, fresh romaine, and a creamy dressing.",
+  image_url: "https://example.com/caesar_salad.jpg",
+  rating: 7.8
+)
+
+Recipe.create!(
+  name: "Shakshuka",
+  description: "A North African dish of poached eggs in a spiced tomato sauce. Perfect for breakfast or brunch.",
+  image_url: "https://example.com/shakshuka.jpg",
+  rating: 9.2
+)
+
+Recipe.create!(
+  name: "Chicken Alfredo Pasta",
+  description: "Rich and creamy alfredo sauce with tender chicken and perfectly cooked fettuccine.",
+  image_url: "https://example.com/alfredo.jpg",
+  rating: 8.1
+)
