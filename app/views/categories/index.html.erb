@@ -1,12 +1,45 @@
-<h1>All Categories</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', 'data-turbo-track': 'reload' %>
 
-<ul>
+    <title>Cookbook</title>
+</head>
+<body>
+    <!-- Banner -->
+   <div class="banner" style="background-image: url('<%= asset_path('kitchentopbanner.jpg') %>'); background-size: cover; background-position: center; text-align: center; padding: 60px; color: white;">
+    <h1>Cookbook</h1>
+    <h2>Save Your Favorite Recipes</h2>
+</div>
+
+
+    <!-- Categories Section -->
+    <div class="categories-section">
+        <div class="categories-header">
+            <div class="categories-title">
+                <h3>List of Categories</h3>
+            </div>
+            <div class="categories-button">
+                <%= link_to 'New Category', new_category_path, class: 'new-category-button' %>
+            </div>
+        </div><div class="categories-list">
   <% @categories.each do |category| %>
-    <li>
-      <%= link_to category.name, category_path(category) %>
-    </li>
+    <%= link_to category_path(category), class: 'category-card-link' do %>
+      <div class="category-card">
+        <%= image_tag category.image_url || 'default_recipe.jpg', alt: 'Recipe Image', class: 'category-image' %>
+        <div class="category-info">
+          <p><%= category.name %></p>
+          <p>Number of Recipes: <%= category.recipes.count %></p>
+        </div>
+      </div>
+    <% end %>
   <% end %>
-</ul>
+</div>
 
-<%= link_to 'Add a New Category', new_category_path %> |
-<%= link_to 'Home', root_path %>
+    </div>
+</body>
+</html>

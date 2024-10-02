@@ -1,0 +1,8 @@
+<h1><%= @recipe.name %></h1>
+
+<p><strong>Description:</strong> <%= @recipe.description %></p>
+<p><strong>Rating:</strong> <%= @recipe.rating %></p>
+<p><strong>Image:</strong></p>
+<%= image_tag @recipe.image_url, alt: @recipe.name%>
+
+<%= link_to 'Back to Categories', categories_path %>

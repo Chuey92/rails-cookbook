@@ -1,15 +1,39 @@
-<h1><%= @category.name %></h1>
+<!-- app/views/categories/show.html.erb -->
 
-<p>Recipes in this category:</p>
-<ul>
-  <% @category.recipes.each do |recipe| %>
-    <li>
-      <%= link_to recipe.name, recipe_path(recipe) %> |
-      <%= link_to 'Delete', category_bookmark_path(@category, recipe.bookmarks.find_by(category: @category)), method: :delete, data: { confirm: 'Are you sure?' } %>
-    </li>
+<!-- Banner Section -->
+<div class="banner" style="background-image: url('<%= asset_path('pasta.jpg') %>');">
+  <h1><%= @category.name %> Recipes</h1>
+  <h2>Save and explore your favorite recipes</h2>
+</div>
+
+<!-- Recipes Section -->
+<div class="container my-5">
+  <!-- Header with "Recipes" title and "New Recipe" button -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Recipes in <%= @category.name %></h2>
+    <%= link_to 'Add a Recipe', new_category_bookmark_path(@category), class: 'btn btn-primary' %>
+  </div>
+
+  <!-- List of Recipes -->
+<div class="cards">
+  <% @category.bookmarks.each do |bookmark| %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= asset_path(bookmark.recipe.image_url) || asset_path('default_recipe.jpg') %>)">
+      <div class="card-content">
+        <h5><%= bookmark.recipe.name %></h5>
+        <p><%= truncate(bookmark.recipe.description, length: 100) %></p>
+        <p>Rating: <%= bookmark.recipe.rating %>/10</p>
+        <div class="actions">
+          <%= link_to 'View Recipe', recipe_path(bookmark.recipe), class: 'btn btn-outline-light' %>
+          <%= button_to "Delete", category_bookmark_path(@category, bookmark), method: :delete, form: { data: { turbo_confirm: "Are you sure?" } }, class: 'btn btn-danger mt-2' %>
+        </div>
+      </div>
+    </div>
   <% end %>
-</ul>
+</div>
 
-<%= link_to 'Add a Recipe', new_category_bookmark_path(@category) %> |
-<%= link_to 'Back to All Categories', categories_path %> |
-<%= link_to 'Home', root_path %>
+  <!-- Navigation Links -->
+  <div class="mt-4">
+    <%= link_to 'Back to All Categories', categories_path, class: 'btn btn-secondary' %>
+    <%= link_to 'Home', root_path, class: 'btn btn-secondary' %>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+ <nav class="navbar">
+        <div class="navbar-left">
+            <%= image_tag 'logo.png', alt: 'Logo', class: 'logo' %>
+        </div>
+        <div class="navbar-right">
+            <%= link_to 'Home', root_path, class: 'nav-link' %>
+            <%= link_to 'New Category', new_category_path, class: 'nav-link' %>
+        </div>
+    </nav>

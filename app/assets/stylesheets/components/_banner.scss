@@ -1,0 +1,26 @@
+// app/assets/stylesheets/components/_banner.scss
+
+.banner {
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 60px;
+  color: white;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5); // Overlay effect
+    z-index: 1;
+  }
+
+  h1, h2 {
+    position: relative;
+    z-index: 2;
+  }
+}
