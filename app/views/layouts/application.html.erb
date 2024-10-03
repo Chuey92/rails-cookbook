@@ -37,6 +37,6 @@
     <%= yield %>
 
     <!-- Load JavaScript dependencies last for better performance -->
-    <%= javascript_include_tag 'application', type: 'module', 'data-turbo-track': 'reload', crossorigin: 'anonymous' %>
+    <%= javascript_include_tag 'application', 'data-turbo-track': 'reload', crossorigin: 'anonymous' %>
   </body>
 </html>

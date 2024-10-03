@@ -1,8 +1,9 @@
 <h1><%= @recipe.name %></h1>
+<p><%= @recipe.description %></p>
+<p>Rating: <%= @recipe.rating %>/10</p>
 
-<p><strong>Description:</strong> <%= @recipe.description %></p>
-<p><strong>Rating:</strong> <%= @recipe.rating %></p>
-<p><strong>Image:</strong></p>
-<%= image_tag @recipe.image_url, alt: @recipe.name%>
-
-<%= link_to 'Back to Categories', categories_path %>
+<% if @recipe.photo.attached? %>
+  <%= image_tag @recipe.photo, class: 'recipe-photo' %>
+<% else %>
+  <%= image_tag 'default_recipe.jpg', alt: 'Default Recipe Image', class: 'recipe-photo' %>
+<% end %>

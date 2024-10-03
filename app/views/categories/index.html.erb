@@ -11,11 +11,10 @@
 </head>
 <body>
     <!-- Banner -->
-   <div class="banner" style="background-image: url('<%= asset_path('kitchentopbanner.jpg') %>'); background-size: cover; background-position: center; text-align: center; padding: 60px; color: white;">
-    <h1>Cookbook</h1>
-    <h2>Save Your Favorite Recipes</h2>
-</div>
-
+    <div class="banner" style="background-image: url('<%= asset_path('kitchentopbanner.jpg') %>'); background-size: cover; background-position: center; text-align: center; padding: 60px; color: white;">
+        <h1>Cookbook</h1>
+        <h2>Save Your Favorite Recipes</h2>
+    </div>
 
     <!-- Categories Section -->
     <div class="categories-section">
@@ -26,20 +25,25 @@
             <div class="categories-button">
                 <%= link_to 'New Category', new_category_path, class: 'new-category-button' %>
             </div>
-        </div><div class="categories-list">
-  <% @categories.each do |category| %>
-    <%= link_to category_path(category), class: 'category-card-link' do %>
-      <div class="category-card">
-        <%= image_tag category.image_url || 'default_recipe.jpg', alt: 'Recipe Image', class: 'category-image' %>
-        <div class="category-info">
-          <p><%= category.name %></p>
-          <p>Number of Recipes: <%= category.recipes.count %></p>
         </div>
-      </div>
-    <% end %>
-  <% end %>
-</div>
 
+        <div class="categories-list">
+          <% @categories.each do |category| %>
+            <%= link_to category_path(category), class: 'category-card-link' do %>
+              <div class="category-card">
+                <% if category.photo.attached? %>
+                  <%= image_tag category.photo, alt: 'Category Image', class: 'category-image' %>
+                <% else %>
+                  <%= image_tag 'default_recipe.jpg', alt: 'Default Recipe Image', class: 'category-image' %>
+                <% end %>
+                <div class="category-info">
+                  <p><%= category.name %></p>
+                  <p>Number of Recipes: <%= category.recipes.count %></p>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
     </div>
 </body>
 </html>
